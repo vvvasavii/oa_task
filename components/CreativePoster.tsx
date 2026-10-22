@@ -2,6 +2,7 @@
 
 import { useEffect, useRef, useState, type FormEvent } from 'react';
 import Shuffle from './Shuffle';
+import RippleGrid from './RippleGrid';
 import './CreativePoster.css';
 
 function WaveField() {
@@ -118,6 +119,7 @@ export default function CreativePoster() {
   const [contactOpen, setContactOpen] = useState(false);
   const [sending, setSending] = useState(false);
   const [contactStatus, setContactStatus] = useState('');
+  const [rockActive, setRockActive] = useState(false);
 
   async function submitContact(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
@@ -194,6 +196,35 @@ export default function CreativePoster() {
         />
       </section>
       <Ticker reverse />
+      <section className="rock-stage" aria-label="Interactive ripple grid">
+        <RippleGrid
+          color="#ffffff"
+          cellSize={48}
+          rippleStrength={1}
+          autoRipple="center"
+          lightMode
+          className="rock-grid"
+        />
+        <button
+          className={`rock-orb${rockActive ? ' rock-orb-active' : ''}`}
+          type="button"
+          aria-label="Let's rock"
+          onPointerEnter={() => setRockActive(true)}
+          onMouseEnter={() => setRockActive(true)}
+          onMouseLeave={() => setRockActive(false)}
+          onFocus={() => setRockActive(true)}
+          onBlur={() => setRockActive(false)}
+          onClick={() => setRockActive(true)}
+        >
+          {rockActive ? (
+            <span className="rock-words" aria-hidden="true">
+              <Shuffle text="LET’S" className="rock-word" tag="span" effect="slide" duration={0.35} shuffleTimes={1} triggerOnce={true} scrambleCharset="ABCDEFGHIJKLMNOPQRSTUVWXYZ" />
+              <Shuffle text="ROCK" className="rock-word" tag="span" effect="slide" duration={0.35} shuffleTimes={1} triggerOnce={true} scrambleCharset="ABCDEFGHIJKLMNOPQRSTUVWXYZ" />
+              <span className="rock-email">ARYAN@OGXSTUDIO.IN</span>
+            </span>
+          ) : <span className="rock-go">GO</span>}
+        </button>
+      </section>
       <section className="after-fold">
         <p>DESIGNING DIGITAL EXPERIENCES&nbsp; · &nbsp;BUILDING FOR THE WEB</p>
         <button className="contact-trigger" onClick={() => setContactOpen(true)}>LET’S WORK TOGETHER ↗</button>

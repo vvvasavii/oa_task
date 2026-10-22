@@ -1,7 +1,7 @@
 import { NextResponse } from 'next/server';
 import mongoClientPromise from '@/lib/mongodb';
 
-export const runtime = 'nodejs';
+
 
 export async function POST(request: Request) {
   try {

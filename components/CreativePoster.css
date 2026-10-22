@@ -95,6 +95,71 @@
   to { transform: translateX(-50%); }
 }
 
+.rock-stage {
+  position: relative;
+  isolation: isolate;
+  display: grid;
+  place-items: center;
+  height: min(86svh, 900px);
+  min-height: 600px;
+  overflow: hidden;
+  background-color: var(--amber) !important;
+  border-bottom: 1px solid var(--ink);
+}
+
+.rock-stage > .rock-grid {
+  position: absolute !important;
+  z-index: 0 !important;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.rock-stage .ripple-grid-fallback { mix-blend-mode: multiply; }
+.rock-stage .ripple-grid-canvas { background: transparent !important; mix-blend-mode: multiply; opacity: .22; }
+
+.rock-orb {
+  position: relative;
+  z-index: 2;
+  display: grid;
+  place-items: center;
+  width: 106px;
+  height: 106px;
+  padding: 0;
+  overflow: visible;
+  border: 0;
+  border-radius: 50%;
+  background: var(--ink);
+  color: var(--amber);
+  cursor: pointer;
+  transition: width 650ms cubic-bezier(.2,.8,.2,1), height 650ms cubic-bezier(.2,.8,.2,1), box-shadow 650ms ease;
+}
+
+.rock-orb::before {
+  content: "";
+  position: absolute;
+  inset: 14px;
+  z-index: -1;
+  border-radius: 50%;
+  background-image: radial-gradient(rgba(209, 139, 0, .4) .8px, transparent .9px);
+  background-size: 12px 12px;
+  opacity: 0;
+  transition: opacity 450ms ease 150ms;
+}
+
+.rock-orb-active {
+  width: min(40vw, 76svh, 760px);
+  height: min(40vw, 76svh, 760px);
+  box-shadow: 0 0 0 18px var(--amber), 0 0 0 20px var(--ink);
+}
+
+.rock-orb-active::before { opacity: 1; }
+.rock-orb:focus-visible { outline: 2px solid var(--ink); outline-offset: 7px; }
+.rock-go { font: 400 29px/1 var(--font-anton), Impact, sans-serif; }
+.rock-words { display: grid; justify-items: center; gap: 0; }
+.rock-word.shuffle-parent { display: block; color: var(--amber); font: 400 clamp(76px, 11vw, 212px)/.78 var(--font-anton), Impact, sans-serif; }
+.rock-email { margin-top: 15px; font: 700 clamp(8px, .72vw, 14px)/1 var(--font-geist-mono), monospace; letter-spacing: .15em; }
+
 .title-band {
   min-height: 237px;
   display: flex;
@@ -174,6 +239,10 @@
   .ticker { height: 39px; }
   .ticker-arrow { flex-basis: 30px; font-size: 12px; }
   .ticker-cell { flex-basis: 42vw; font-size: 10px; }
+  .rock-stage { height: 72svh; min-height: 520px; }
+  .rock-orb-active { width: min(78vw, 64svh); height: min(78vw, 64svh); box-shadow: 0 0 0 10px var(--amber), 0 0 0 12px var(--ink); }
+  .rock-word.shuffle-parent { font-size: clamp(68px, 17vw, 110px); }
+  .rock-email { margin-top: 12px; font-size: 8px; }
   .title-band { min-height: 172px; gap: 2vw; padding-inline: 3vw; }
   .hero-title.shuffle-parent { font-size: clamp(2.2rem, 12vw, 5rem); }
   .title-star { width: 8vw; }
@@ -182,4 +251,5 @@
 
 @media (prefers-reduced-motion: reduce) {
   .ticker-track { animation: none; }
+  .rock-orb { transition-duration: 1ms; }
 }
