@@ -34,3 +34,17 @@ You can check out [the Next.js GitHub repository](https://github.com/vercel/next
 The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
 
 Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+# OGX Creative Developer
+
+The contact endpoint stores submissions in MongoDB and sends the submitter a confirmation through Resend when email is configured.
+
+Set these environment variables in `.env.local` for local development and in the Vercel project settings before deploying:
+
+```env
+MONGODB_URI=your-mongodb-connection-string
+MONGODB_DB=portfolio
+RESEND_API_KEY=your-resend-api-key
+CONTACT_FROM_EMAIL=OGX Studio <hello@your-verified-domain.com>
+```
+
+`MONGODB_URI` is required. `RESEND_API_KEY` and `CONTACT_FROM_EMAIL` must both be set to send confirmation emails; without them, messages are still saved and the form reports that email is not configured. Resend requires the sender domain to be verified.
