@@ -77,18 +77,25 @@
   flex: 1 1 0;
   min-width: 0;
   padding: 0;
-  border: 1px solid rgba(9, 8, 0, .68);
+  border: 1px solid rgba(38, 24, 0, .72);
   border-top: 0;
   border-bottom: 0;
   border-radius: 0;
-  background: linear-gradient(90deg, rgba(0, 0, 0, .04), transparent 12%, transparent 88%, rgba(0, 0, 0, .08));
+  background:
+    linear-gradient(90deg, rgba(37, 22, 0, .17), transparent 5%, transparent 91%, rgba(47, 29, 0, .25)),
+    linear-gradient(180deg, rgba(255, 192, 48, .08), transparent 52%, rgba(83, 49, 0, .1));
+  box-shadow: inset 1px 0 rgba(255, 196, 54, .18), inset -2px 0 3px rgba(39, 24, 0, .12);
   color: rgba(9, 8, 0, .62);
   cursor: pointer;
   touch-action: none;
 }
 
 .piano-white-key:hover,
-.piano-white-key:active { background-color: rgba(255, 194, 48, .24); }
+.piano-white-key:active {
+  background:
+    linear-gradient(90deg, rgba(37, 22, 0, .2), rgba(255, 193, 40, .16) 18%, rgba(255, 193, 40, .16) 82%, rgba(47, 29, 0, .28)),
+    linear-gradient(180deg, rgba(255, 210, 90, .12), transparent 56%, rgba(83, 49, 0, .12));
+}
 
 .piano-white-key:focus-visible,
 .piano-black-key:focus-visible { outline: 2px solid #fff1bf; outline-offset: -4px; }
@@ -113,18 +120,30 @@
   width: clamp(28px, 2.7vw, 52px);
   height: 62%;
   transform: translateX(-50%);
-  border: 1px solid #000;
+  border: 1px solid #090909;
   border-top: 0;
   border-radius: 0 0 8px 8px;
-  background: linear-gradient(90deg, #111, #1b1b1b 35%, #191919 75%, #080808);
-  box-shadow: 4px 9px 12px rgba(0, 0, 0, .42);
+  background:
+    linear-gradient(90deg, #101010 0%, #1b1b1b 24%, #202020 48%, #191919 78%, #080808 100%);
+  box-shadow:
+    inset 1px 0 rgba(255, 255, 255, .08),
+    inset -2px 0 3px rgba(0, 0, 0, .55),
+    3px 8px 8px rgba(0, 0, 0, .3),
+    5px 12px 13px rgba(0, 0, 0, .2);
   cursor: pointer;
   pointer-events: auto;
   touch-action: none;
 }
 
 .piano-black-key:hover,
-.piano-black-key:active { background: linear-gradient(90deg, #252525, #363636 40%, #191919); }
+.piano-black-key:active {
+  background: linear-gradient(90deg, #202020, #303030 40%, #252525 78%, #111);
+  box-shadow:
+    inset 1px 0 rgba(255, 255, 255, .12),
+    inset -2px 0 3px rgba(0, 0, 0, .55),
+    3px 8px 8px rgba(0, 0, 0, .32),
+    5px 12px 13px rgba(0, 0, 0, .22);
+}
 
 .piano-hint {
   margin: 0;
