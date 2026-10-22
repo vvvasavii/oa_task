@@ -3,6 +3,7 @@
 import { useEffect, useRef, useState, type FormEvent } from 'react';
 import Shuffle from './Shuffle';
 import RippleGrid from './RippleGrid';
+import PianoFooter from './PianoFooter';
 import './CreativePoster.css';
 
 function WaveField() {
@@ -245,6 +246,7 @@ export default function CreativePoster() {
           </section>
         </div>
       )}
+      <PianoFooter />
     </main>
   );
 }
